@@ -31,6 +31,8 @@ String sql = "select*from tbusuarios where login=? and senha=?";
         if(rs.next()){
             TelaPrincipal principal = new  TelaPrincipal();
             principal.setVisible(true);
+            this.dispose();// fecha  a tela de login
+            conexao.close();// fecha a conexao
         }else{
             JOptionPane.showMessageDialog(null, "usuario e/ou senha invalido(s)");
         }
