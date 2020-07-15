@@ -6,6 +6,7 @@
 package br.com.infox.telas;
 import java.sql.*;
 import br.com.infox.dal.ModuloConexao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 /**
  *
@@ -29,10 +30,25 @@ String sql = "select*from tbusuarios where login=? and senha=?";
         rs = pst.executeQuery();
         // se existir usuario e senha correspondente
         if(rs.next()){
-            TelaPrincipal principal = new  TelaPrincipal();
-            principal.setVisible(true);
-            this.dispose();// fecha  a tela de login
-            conexao.close();// fecha a conexao
+            //a linha abaixo obtem o conteudo do campo perfil da tabela tbusuarios
+            String perfil=rs.getString(6);
+            //System.out.println(perfil);
+            //a estrutura abaixo faz o tratamento do perfil do usuario
+            if (perfil.equals("admin")) {
+                TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                TelaPrincipal.MenRel.setEnabled(true);
+                TelaPrincipal.MenCadUsu.setEnabled(true);
+                TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                TelaPrincipal.lblUsuario.setForeground(Color.red);
+                this.dispose();// fecha  a tela de login
+            }else if(perfil.equals("user")){
+                TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                this.dispose();// fecha  a tela de login
+            }
+            //conexao.close();// fecha a conexao
         }else{
             JOptionPane.showMessageDialog(null, "usuario e/ou senha invalido(s)");
         }
