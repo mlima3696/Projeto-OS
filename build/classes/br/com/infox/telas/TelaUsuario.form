@@ -104,11 +104,11 @@
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnUsuCreate" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnUsuRead" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUsuUpdate" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUsuDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUsuCreate" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="160" max="32767" attributes="0"/>
           </Group>
@@ -196,6 +196,9 @@
           <Dimension value="[80, 80]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuReadActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUsuUpdate">
       <Properties>

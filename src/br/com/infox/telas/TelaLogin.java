@@ -13,11 +13,17 @@ import javax.swing.JOptionPane;
  * @author ACER
  */
 public class TelaLogin extends javax.swing.JFrame {
+// usando a variavel conexao DAL    
 Connection conexao = null;
+// criando variaveis especiais para conexao com o banco
+//Prepared Statement e ResultSet sao frameworks do pacaote java.sql
+// e servem para preparar e executar as instrucoes sql
 PreparedStatement pst = null;
 ResultSet rs = null;
 
+//criando o metodo logar
 public void logar(){
+//logica principal para pesquisar no banco de dados
 String sql = "select*from tbusuarios where login=? and senha=?";
     try {
         // as linhas abaixo preparam a consulta ao banco em funcao

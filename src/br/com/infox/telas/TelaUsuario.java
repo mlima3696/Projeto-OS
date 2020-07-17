@@ -6,16 +6,51 @@
 package br.com.infox.telas;
 
 /**
- *
+ * Aula 13
  * @author ACER
  */
+import java.sql.*;
+import br.com.infox.dal.ModuloConexao;
+import javax.swing.JOptionPane;
 public class TelaUsuario extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form TelaUsuario
-     */
+// usando a variavel conexao DAL    
+Connection conexao = null;
+// criando variaveis especiais para conexao com o banco
+//Prepared Statement e ResultSet sao frameworks do pacaote java.sql
+// e servem para preparar e executar as instrucoes sql
+PreparedStatement pst = null;
+ResultSet rs = null;
+    
+     //Creates new form TelaUsuario
     public TelaUsuario() {
         initComponents();
+        conexao = ModuloConexao.conector();
+    }
+    private void consultar(){
+    String sql = "select*from tbusuarios where iduser=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtUsuId.getText());
+            rs=pst.executeQuery();
+            if(rs.next()){
+                txtUsuNome.setText(rs.getString(2));
+                txtUsuFone.setText(rs.getString(3));
+                txtUsuLogin.setText(rs.getString(4));
+                txtUsuSenha.setText(rs.getString(5));
+                // a linha abaixo se refere ao combobox
+                cboUsuPerfil.setSelectedItem(rs.getString(6));
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário não cadastrado!");
+                //as linhas abaixo limpam os campos
+                txtUsuNome.setText(null);
+                txtUsuFone.setText(null);
+                txtUsuLogin.setText(null);
+                txtUsuSenha.setText(null);
+                cboUsuPerfil.setSelectedItem(null);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -73,6 +108,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnUsuRead.setToolTipText("Consultar");
         btnUsuRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuRead.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnUsuRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuReadActionPerformed(evt);
+            }
+        });
 
         btnUsuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/update.png"))); // NOI18N
         btnUsuUpdate.setToolTipText("Alterar");
@@ -152,16 +192,21 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                     .addComponent(cboUsuPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuRead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuRead, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuUpdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUsuReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuReadActionPerformed
+        // chamando o metodo consultar
+        consultar();
+    }//GEN-LAST:event_btnUsuReadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
