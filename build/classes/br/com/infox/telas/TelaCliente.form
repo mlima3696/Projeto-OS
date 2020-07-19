@@ -54,14 +54,17 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="txtCliTel" min="-2" pref="248" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtCliNome" pref="400" max="32767" attributes="0"/>
-                                              <Component id="txtCliEnd" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCliEnd" alignment="1" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="txtCliTel" min="-2" pref="248" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtCliNome" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -90,9 +93,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCliPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCliPesquisar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -101,13 +104,13 @@
               <Component id="jScrollPane1" min="-2" pref="122" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtCliNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCliNome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCliEnd" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCliEnd" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -125,7 +128,7 @@
                   <Component id="btnCliUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCliDelete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -138,11 +141,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="*Nome"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCliNome">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCliNomeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -168,8 +166,6 @@
         <Property name="text" type="java.lang.String" value="email"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCliEnd">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtCliTel">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCliTelActionPerformed"/>
@@ -187,6 +183,9 @@
           <Color id="Cursor em Forma de M&#xe3;o"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCliCreateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCliUpdate">
       <Properties>
@@ -198,6 +197,9 @@
           <Color id="Cursor em Forma de M&#xe3;o"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCliUpdateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCliDelete">
       <Properties>
@@ -248,5 +250,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="txtCliNome">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCliEnd">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCliEndActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
