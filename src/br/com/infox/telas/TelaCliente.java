@@ -254,7 +254,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idcli", "nomecli", "endcli", "fonecli"
             }
         ));
         tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,17 +310,14 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                                                     .addComponent(txtCliTel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(108, 108, 108)
-                                        .addComponent(btnCliCreate)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(btnCliUpdate)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(btnCliDelete))
-                                    .addComponent(jLabel7))
-                                .addGap(24, 24, 24)))
+                                .addGap(108, 108, 108)
+                                .addComponent(btnCliCreate)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnCliUpdate)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnCliDelete)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -354,7 +351,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtCliTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCliEma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -363,7 +360,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     .addComponent(btnCliCreate)
                     .addComponent(btnCliUpdate)
                     .addComponent(btnCliDelete))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 640, 480);
