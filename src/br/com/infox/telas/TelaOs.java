@@ -169,6 +169,36 @@ public class TelaOs extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    //metodo para excluir uma OS
+    private void excluir_os(){
+       int confirma= JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a OS","Atenção",JOptionPane.YES_NO_OPTION);
+        if (confirma==JOptionPane.YES_OPTION) {
+            String sql="delete from tbos where os=?";
+            try {
+                pst=conexao.prepareStatement(sql);
+                pst.setString(1, txtOs.getText());
+                int apagado=pst.executeUpdate();
+                if(apagado>0){
+                    JOptionPane.showMessageDialog(null, "OS excluída com sucesso");
+                    txtOs.setText(null);
+                    txtData.setText(null);
+                    txtCliId.setText(null);
+                    txtOsEquip.setText(null);
+                    txtOsDef.setText(null);
+                    txtOsServ.setText(null);
+                    txtOsTec.setText(null);
+                    txtOsValor.setText(null);
+                    //habilitar os objetos
+                    btnOsAdicionar.setEnabled(true);
+                    tblClientes.setVisible(true);
+                    txtCliPesquisar.setEnabled(true);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        } 
+    
+    }
     
     
     /**
@@ -440,6 +470,11 @@ public class TelaOs extends javax.swing.JInternalFrame {
         btnOsExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/delete.png"))); // NOI18N
         btnOsExcluir.setToolTipText("Excluir");
         btnOsExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOsExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOsExcluirActionPerformed(evt);
+            }
+        });
 
         btnOsImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/print.png"))); // NOI18N
         btnOsImprimir.setToolTipText("Imprimir");
@@ -575,6 +610,11 @@ public class TelaOs extends javax.swing.JInternalFrame {
         // chama o metodo alterar_os
         alterar_os();
     }//GEN-LAST:event_btnOsAlterarActionPerformed
+
+    private void btnOsExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsExcluirActionPerformed
+        //chamando o metodo para excluir uma OS
+        excluir_os();
+    }//GEN-LAST:event_btnOsExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
