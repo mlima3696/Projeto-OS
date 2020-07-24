@@ -166,6 +166,11 @@ Connection conexao =null;
 
         MenRelSer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         MenRelSer.setText("Serviços");
+        MenRelSer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenRelSerActionPerformed(evt);
+            }
+        });
         MenRel.add(MenRelSer);
 
         Menu.add(MenRel);
@@ -293,6 +298,23 @@ Connection conexao =null;
             }
         } 
     }//GEN-LAST:event_MenRelCliActionPerformed
+
+    private void MenRelSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenRelSerActionPerformed
+        // gerando um relatório de servico
+         int confirma=JOptionPane.showConfirmDialog(null, "Confirma a emissão deste relatório?","Atenção",JOptionPane.YES_NO_OPTION);
+        if (confirma==JOptionPane.YES_OPTION) {
+            //emitindo o relatório com o framework JasperReport
+            try {
+                //Usando a classe JasperReport para preparar a impressão de um relatório
+                JasperPrint print=JasperFillManager.fillReport("C:/reports/servico.jasper",null,conexao);
+                // a linha abaixo exibe o relatório através da classe JasperViewer
+                JasperViewer.viewReport(print,false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        } 
+        
+    }//GEN-LAST:event_MenRelSerActionPerformed
 
     /**
      * @param args the command line arguments
